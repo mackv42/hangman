@@ -1,5 +1,8 @@
 
-	document.getElementById("computerPlay").onclick = function(){computerPlay()};
+	document.getElementById("computerPlay").onclick = function(e){
+		e.preventDefault();
+		computerPlay()
+	};
 
 
 
@@ -30,8 +33,6 @@
 			frequencyList.push(0);
 		}
 
-		console.log(frequencyList);
-
 		for(let i=0; i<100; i++){
 			let word = arr[i];
 			for(let j=0; j<word.length; j++){
@@ -55,39 +56,23 @@
 	function lookup( word ){
 		//word = word.replaceAllWith("_", "?");
 		var request = new XMLHttpRequest();
-		//request.open('GET', "https://api.datamuse.com/words?sp=" + word, true);
+		request.open('GET', "https://api.datamuse.com/words?sp=" + word, true);
 		var data = [];
 		var mostCommon = [];
-		/*request.onload = function () {
+		request.onload = function () {
 			data = JSON.parse(this.response);
 
 			console.log(this.response);
-			console.log(data.map( d => { return d.word } ));
+			
 			myData = findMostCommonLetters(data.map( d => { return d.word } ));		
 		}
 
 		request.send();
-		*/
-		console.log('still here');
-		$.ajax({
-			type: "GET",
-			url: "https://api.datamuse.com/words?sp=" + word,
-			contentType: "application/json; charset=utf-8",
-			datatype: "json",
-			success: function(response){
-				console.log("Test");
-				console.log(response);
-			},
-			failure: function(response){
-				console.log('nooo', response);
-			}
-		});
-
 	}
 
-	function computerPlay( word ){
+	function computerPlay(  ){
 
-		word = "apple";
+		let word = document.getElementById("phrase").value;
 		//API calls
 		let foundWord = "";
 		for(let i=0; i<word.length; i++){
