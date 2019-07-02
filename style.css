@@ -3,6 +3,17 @@
 	
 }
 
+#container{
+
+}
+
+#canvas{
+	border-style: solid;
+	border-color: black;
+	border-width: 3px;
+	border-radius: 3px;
+}
+
 form{
 	background-color: white;
 

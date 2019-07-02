@@ -22,7 +22,7 @@ String.prototype.replaceAllWith = function( r, s ){
 
 
 function questionMark( word ){
-	return word.replaceAllWith("_", "?");
+
 }
 
 
@@ -56,6 +56,7 @@ function convertToDictionary(arr){
 	for(let i=0; i<arr.length; i++){
 		dict[String.fromCharCode(i+97)] = arr[i];
 	}
+	console.log(dict);
 	return dict;
 }
 
@@ -73,7 +74,7 @@ function lookup( word ){
 		
 		myData = findMostCommonLetters(data.map( d => { return d.word } ));
 		let keys = convertToDictionary(myData);
-		let keysSorted = Object.Keys(keys).sort(function(a,b){return keys[a]-keys[b]});
+		let keysSorted = Object.keys(keys).sort(function(a,b){return keys[a]-keys[b]});
 		console.log(keysSorted);
 		myData = keysSorted;
 	}
@@ -93,11 +94,10 @@ function computerPlay( word ){
 	}
 	function loop(){ // loops until find word or loses
 		lookup(foundWord);
-		if(guess(data[0])){
-
-		}
-		console.log(convertToDictionary(myData));
+		//guess(foundWord);
+		//console.log(convertToDictionary(myData));
 	}
+	loop();
 }
 
 function humanPlay( word ){
